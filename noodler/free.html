@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Sync Canvas - NTT Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 15mm;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #334155;
+        }
+
+        .header-container {
+            background-color: #1e293b;
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-shape {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.15;
+        }
+
+        .section-marker {
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background-color: #d946ef;
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            border: 1px solid #f1f5f9;
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            height: 100%;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .dot {
+            min-width: 8px;
+            height: 8px;
+            background-color: #d946ef;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        .step-card {
+            border: 1.5px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            background-color: #fdfdff;
+        }
+
+        .footer-line {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="header-container">
+            <div class="relative z-10">
+                <div class="bg-[#d946ef] text-white text-[10px] font-extrabold px-4 py-1 rounded-full inline-block mb-4 uppercase tracking-widest">
+                    DPT FUTURE SANDBOX 2026
+                </div>
+                <h1 class="text-5xl font-extrabold mb-2 tracking-tight">DPT Smart Sync</h1>
+                <p class="text-slate-300 text-xl font-medium">ระบบเชื่อมโยงข้อมูลก่อสร้างและตรวจสอบสิทธิอัจฉริยะ</p>
+            </div>
+            
+            <div class="header-shape">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="white">
+                    <path
+                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5">
+                    </path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="flex-grow flex flex-col gap-8">
+            
+            <div class="card-grid">
+                <div class="content-card">
+                    <div class="section-header">
+                        <div class="section-marker"></div>
+                        <span>ปัญหา (Pain Point)</span>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot"></div>
+                        <div><span class="text-red-600 font-bold">ความล่าช้า:</span> 
+                            การติดตามผังเมือง (Monitoring) ต้องใช้แรงงานคนเดินสำรวจและจดบันทึกลงกระดาษเป็นหลัก
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot"></div>
+                        <div><span class="text-red-600 font-bold">ข้อมูลไม่เป็นปัจจุบัน:</span> 
+                            รอบรายงานทุก 5 ปี ข้อมูลจึงไม่สอดคล้องกับสภาพจริงของการขยายตัวของเมือง
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot"></div>
+                        <div><span class="text-red-600 font-bold">ข้อจำกัดการบริการ:</span> 
+                            ประชาชนต้องเดินทางมาสอบถามสิทธิก่อสร้างและระยะถอยร่นด้วยตัวเอง
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-header">
+                        <div class="section-marker"></div>
+                        <span>ทางออก (Solution)</span>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #0ea5e9;"></div>
+                        <div><span class="text-sky-600 font-bold">Permit API:</span> 
+                            ระบบเชื่อมต่อข้อมูลใบอนุญาตก่อสร้างจากท้องถิ่นเข้าสู่ฐานข้อมูล GIS แบบอัตโนมัติ
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #0ea5e9;"></div>
+                        <div><span class="text-sky-600 font-bold">AI Satellite:</span> 
+                            ใช้ AI วิเคราะห์การเปลี่ยนแปลงจากดาวเทียมแทนการเดินสำรวจภาคสนาม
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #0ea5e9;"></div>
+                        <div><span class="text-sky-600 font-bold">Smart Portal:</span> 
+                            แอปฯ ตรวจสอบสิทธิและระยะถอยร่นได้ด้วยตนเองผ่านมือถือได้ทุกที่ 24 ชม.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="section-header">
+                    <div class="section-marker"></div>
+                    <span>ขั้นตอนสำคัญ (Strategic Plan)</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="step-card">
+                        <div class="text-[#2563eb] font-extrabold text-lg mb-1">ระยะที่ 1</div>
+                        <p class="text-xs text-slate-500 leading-relaxed">สร้างมาตรฐาน Digital Data ร่วมกับ อปท. และเชื่อมฐานข้อมูลทั่วประเทศ</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="text-[#2563eb] font-extrabold text-lg mb-1">ระยะที่ 2</div>
+                        <p class="text-xs text-slate-500 leading-relaxed">พัฒนาระบบประมวลผล GIS อัตโนมัติ (Auto-Join) และโมเดล AI ตรวจวัดเมือง</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="text-[#2563eb] font-extrabold text-lg mb-1">ระยะที่ 3</div>
+                        <p class="text-xs text-slate-500 leading-relaxed">เปิดใช้งาน Citizen Interface สำหรับบริการภาคประชาชนเต็มรูปแบบ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="content-card">
+                    <div class="section-header">
+                        <div class="section-marker"></div>
+                        <span>ผลลัพธ์ที่คาดหวัง (Results)</span>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #10b981;"></div>
+                        <div><span class="text-emerald-600 font-bold">ประสิทธิภาพ:</span> 
+                            ลดระยะเวลาจัดทำรายงานจาก 6 เดือน เหลือเพียงการเรียกดูแบบ Real-time
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #10b981;"></div>
+                        <div><span class="text-emerald-600 font-bold">ความคุ้มค่า:</span> 
+                            ลดงบประมาณสำรวจภาคสนามและลดความผิดพลาดจากกระบวนการ Manual
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="dot" style="background-color: #10b981;"></div>
+                        <div><span class="text-emerald-600 font-bold">ความโปร่งใส:</span> 
+                            ประชาชนตรวจสอบข้อมูลได้เอง ลดการใช้ดุลพินิจส่วนบุคคลของเจ้าหน้าที่
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card flex flex-col">
+                    <div class="section-header">
+                        <div class="section-marker"></div>
+                        <span>ความยั่งยืน</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        สอดคล้องกับ <strong>
+                        พ.ร.บ. ผังเมือง พ.ศ. 2562</strong> 
+                        และนโยบาย <strong>
+                        Digital Government</strong>
+                        เพื่อมุ่งสู่การเป็น Digital Twin ของกรมโยธาฯ อย่างยั่งยืน
+                    </p>
+                    <div class="mt-auto bg-slate-50 p-4 rounded-xl border-l-4 border-slate-200">
+                        <p class="text-[13px] text-slate-400 italic font-medium leading-relaxed">
+                            "เปลี่ยนงานสำรวจ สู่ข้อมูลอัจฉริยะ เพื่อการพัฒนาเมืองที่ไร้รอยต่อ"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-line">
+            <div class="flex flex-col">
+                <span class="font-bold text-slate-700">กล้าคิด พลิกอนาคตกรมโยธาธิการและผังเมือง</span>
+                <span class="text-[11px] mt-0.5">จัดทำโดย: คณะทำงาน 3 ท่าน</span>
+            </div>
+            <div class="logo-group">
+                <div class="logo-box bg-[#1e293b]">N</div>
+                <div class="logo-box bg-[#d946ef]">T</div>
+                <div class="logo-box bg-[#0ea5e9]">T</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
